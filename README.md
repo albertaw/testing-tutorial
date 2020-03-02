@@ -16,7 +16,10 @@ npm install --save-dev mocha
 Create a folder named test to hold your test files.
 
 Install Chai to use their expect assertions
+
+```bash
 npm install chai --save-dev
+```
 
 Example use:
 expect(actual_value).matcher(expected_value)
