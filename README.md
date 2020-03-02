@@ -114,6 +114,49 @@ describe('Creating a post', function() {
 });
 ```
 
+Testing Android apps with Espresso
+=====================================
+
+Add the following to dependencies inside app `build.gradle` file:
+
+```
+androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+androidTestImplementation 'androidx.test:runner:1.1.0'
+androidTestImplementation 'androidx.test:rules:1.1.0'
+```
+
+Add the following to the default config inside the `build.gradle` file:
+
+```
+testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+```
+
+Add test to androidTest directory.
+
+API:
+
+```java
+onView(ViewMatcher).perform(ViewAction).check(ViewAssertion);
+```
+
+Example test:
+
+```java
+
+@LargeTest
+public class HelloWorldEspressoTest {
+
+    @Rule
+    public ActivityTestRule<MainActivity> activityRule =
+            new ActivityTestRule<>(MainActivity.class);
+
+    @Test
+    public void listGoesOverTheFold() {
+        onView(withText("Hello world!")).check(matches(isDisplayed()));
+    }
+}
+```
+
 Resources
 ===============================
 
@@ -121,3 +164,5 @@ Resources
 - [Chai assertion library](https://www.chaijs.com/)
 - [Axios - promise based HTTP client](https://github.com/axios/axios)
 - [Cypress end-to-end testing framework](https://www.cypress.io/)
+- [Espresso Android UI testing framework](https://developer.android.com/training/testing/espresso)
+
